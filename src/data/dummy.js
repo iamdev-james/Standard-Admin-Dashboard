@@ -2464,7 +2464,7 @@ export const ordersData = [
     Status: 'rejected',
     StatusBg: 'red',
     ProductImage:
-      product1,
+      product8,
   },
   {
     OrderID: 94757,

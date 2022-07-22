@@ -1,29 +1,37 @@
 import React from 'react'
-import { GridComponent, ColumnsDirective, ColumnDirective, Resize, Sort, ContextMenu, Filter, Page, ExcelExport, PdfExport, Edit, Inject } from '@syncfusion/ej2-react-grids' 
-import { ordersGrid, ordersData } from '../data/dummy'
-// contextMenuItems,
+import { GridComponent, ColumnsDirective, ColumnDirective, Page, Search, Inject } from '@syncfusion/ej2-react-grids'
 
-// Helper header for each page
+import { employeesGrid, employeesData } from '../data/dummy'
+
 import { Header } from '../layout'
 
 const Employees = () => {
-  return (
+  return employeesData?  (
     <div className='m-2 md:m-10 p-2 md:p-10 bg-white rounded-3xl'>
-      <Header category="Page" title="Employees" />
+      <Header category="Page" title= "Employees" />
       <GridComponent
         id="gridcomp"
-        dataSource={ ordersData }
+        dataSource={ employeesData }
         allowPaging
         allowSorting
+        toolbar={['Search']}
+        editSettings={{
+          allowEditing: true
+        }}
+        width='auto'
       >
         <ColumnsDirective
         >
-          {ordersGrid.map((item, index) => (
+          {employeesGrid.map((item, index) => (
             <ColumnDirective key={ index } {...item} />
           ))}
         </ColumnsDirective>
-        <Inject services={[ Resize, Sort, Filter, Page, ExcelExport, PdfExport, ContextMenu, Edit ]} />
+        <Inject services={[ Page, Search ]} />
       </GridComponent>
+    </div>
+  ) : (
+    <div className='m-2 md:m-10 p-2 md:p-10 bg-white rounded-3xl'>
+      <p className='text-3xl text-gray-500 font-bold'>Loading...</p>
     </div>
   )
 }

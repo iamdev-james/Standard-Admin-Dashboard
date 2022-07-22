@@ -13,6 +13,7 @@ export const ContextProvider = ({ children }) => {
   const [ menuActive, setMenuActive ] = useState(true)
   const [isClicked, setIsClicked] = useState(initialState)
   const [screenSize, setScreenSize] = useState(undefined)
+  const [customersData, setCustomersData] = useState(null)
 
   // Function to handle nav items clicks
   const toggleNavModal = (clicked) => {
@@ -27,7 +28,9 @@ export const ContextProvider = ({ children }) => {
       setIsClicked,
       toggleNavModal,
       screenSize,
-      setScreenSize
+      setScreenSize,
+      customersData,
+      setCustomersData
     }}
     >
       { children }

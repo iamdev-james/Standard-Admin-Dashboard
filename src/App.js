@@ -1,4 +1,4 @@
-// import { useEffect } from 'react'
+import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { FiSettings } from 'react-icons/fi';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
@@ -16,7 +16,14 @@ import { useStateContext } from './contexts/ContextProvider';
 import './App.css';
 
 function App() {
-  const { menuActive } = useStateContext()
+  const { menuActive, setCustomersData } = useStateContext()
+
+  // Fetching users data from an Api
+    useEffect(() => {
+      fetch('https://dummyjson.com/users')
+      .then(response => response.json())
+      .then(data => setCustomersData(data.users))
+    }, [setCustomersData])
 
   return (
     <div className="App">

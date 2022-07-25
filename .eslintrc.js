@@ -18,6 +18,8 @@ module.exports = {
     'react',
   ],
   rules: {
+    "import/no-extraneous-dependencies": ["error",  {"devDependencies": true}],
+    "react/jsx-props-no-spreading": "off",
     'react/function-component-definition': 0,
     'import/extensions': 0,
     'react/prop-types': 0,

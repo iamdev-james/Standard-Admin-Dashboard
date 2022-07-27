@@ -10,8 +10,11 @@ const Kanban = () => (
     <KanbanComponent
       id="kanban"
       dataSource={kanbanData}
+      cardSettings={{ contentField: 'Summary', headerField: 'Id' }}
+      keyField= "Status"
     >
       <ColumnsDirective>
+        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
         {kanbanGrid.map((item, index) => (
           <ColumnDirective key={index} {...item} />
         ))}

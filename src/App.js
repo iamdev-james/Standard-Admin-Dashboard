@@ -6,6 +6,9 @@ import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 // Pages to be rendered
 import { Ecommerce, Kanban, Orders, Employees, Editor, Customers, ColorPicker, Calendar, Area, Bar, ColorMapping, Financial, Line, Pie, Pyramid, Stacked  } from './pages'
 
+// Components to be used
+import { ThemeSettings } from './components'
+
 // Layouts to be used
 import { Sidebar, Navbar } from './layout'
 
@@ -16,7 +19,7 @@ import { useStateContext } from './contexts/ContextProvider';
 import './App.css';
 
 function App() {
-  const { menuActive, setCustomersData } = useStateContext()
+  const { menuActive, setCustomersData, themeSettings, setThemeSettings, currentColor, currentMode } = useStateContext()
 
   // Fetching users data from an Api
     useEffect(() => {
@@ -26,7 +29,7 @@ function App() {
     }, [setCustomersData])
 
   return (
-    <div className="App">
+    <div className={`overflow-x-hidden ${currentMode === 'Dark' ? 'dark' : ''}`}>
       <BrowserRouter>
         <div className="flex relative dark:bg-main-dark-bg">
           <div className="fixed right-4 bottom-4" style={{ zIndex: '1000' }}>
@@ -35,9 +38,11 @@ function App() {
               type='button'
               className='text-3xl p-3 hover:drop-shadow-xl hover-bg-light-gray text-white'
               style={{
-                background: 'blue',
+                backgroundColor: currentColor,
                 borderRadius: '50%'
-              }}>
+              }}
+              onClick={() => setThemeSettings(true)}
+              >
                 <FiSettings className="cursor-pointer" />
               </button>
             </TooltipComponent>
@@ -54,14 +59,16 @@ function App() {
           )}
           <div
           className={
-            `dark:bg-main-bg bg-main-bg min-h-screen w-full ${menuActive? 'md:ml-72' : 'flex-2'}`
+            `dark:bg-main-dark-bg bg-main-bg min-h-screen w-full ${menuActive? 'md:ml-72' : 'flex-2'}`
           }>
             <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full">
               <Navbar />
             </div>
 
           {/* Main Page */}
-          <div>
+          <div className="md:mt-0 mt-24">
+            {themeSettings && <ThemeSettings />}
+
             <Routes>
               <Route path="/" element={ <Ecommerce />} />
               <Route path="/ecommerce" element={ <Ecommerce />} />

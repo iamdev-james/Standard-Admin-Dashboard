@@ -40,10 +40,13 @@ export const ContextProvider = ({ children }) => {
   const toggleNavModal = (clicked) => {
     setIsClicked({...initialState, [clicked]: true});
   } 
+  const closeNavModal = (clicked) => {
+    setIsClicked({...initialState, [clicked]: false});
+  } 
   return (
     <StateContext.Provider
     value={{
-      menuActive,
+      menuActive, closeNavModal,
       setMenuActive, isClicked,
       setIsClicked, toggleNavModal,
       screenSize, setScreenSize,

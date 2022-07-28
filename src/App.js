@@ -29,7 +29,7 @@ function App() {
     }, [setCustomersData])
 
   return (
-    <div className={`${currentMode === 'Dark' ? 'dark' : ''}`}>
+    <div className={`overflow-x-hidden ${currentMode === 'Dark' ? 'dark' : ''}`}>
       <BrowserRouter>
         <div className="flex relative dark:bg-main-dark-bg">
           <div className="fixed right-4 bottom-4" style={{ zIndex: '1000' }}>
@@ -66,7 +66,7 @@ function App() {
             </div>
 
           {/* Main Page */}
-          <div>
+          <div className="md:mt-0 mt-24">
             {themeSettings && <ThemeSettings />}
 
             <Routes>

@@ -9,13 +9,21 @@ const initialState = {
 }
 
 export const ContextProvider = ({ children }) => {
+  const [ username, setUsername ] = useState(`${localStorage.getItem('Username')}`);
   const [ menuActive, setMenuActive ] = useState(true);
   const [isClicked, setIsClicked] = useState(initialState);
   const [screenSize, setScreenSize] = useState(undefined);
   const [customersData, setCustomersData] = useState(null);
-  const [currentColor, setCurrentColor] = useState('#03C9D7');
-  const [currentMode, setCurrentMode] = useState('Light');
-  const [ themeSettings, setThemeSettings ] = useState(false)
+  const [currentColor, setCurrentColor] = useState(`${localStorage.getItem('colorMode')? localStorage.getItem('colorMode'): '#03C9D7'}`);
+  const [currentMode, setCurrentMode] = useState(`${localStorage.getItem('themeMode')? localStorage.getItem('themeMode'): 'Light'}`);
+  const [ themeSettings, setThemeSettings ] = useState(false);
+  const [ chat, setChat ] = useState([]);
+  const [ userTyping, setUserTyping ] = useState(null);
+
+// Adding to chat messages
+  const addChat = (newChat) => {
+    setChat(prev => [...prev, newChat])
+  }
 
   const setMode = (e) => {
     setCurrentMode(e.target.value)
@@ -45,6 +53,7 @@ export const ContextProvider = ({ children }) => {
   return (
     <StateContext.Provider
     value={{
+      username, setUsername,
       menuActive, closeNavModal,
       setMenuActive, isClicked,
       setIsClicked, toggleNavModal,
@@ -52,7 +61,9 @@ export const ContextProvider = ({ children }) => {
       customersData, setCustomersData,
       currentColor, currentMode,
       themeSettings, setThemeSettings,
-      setMode, setColor
+      setMode, setColor,
+      chat, addChat,
+      userTyping, setUserTyping
     }}
     >
       { children }

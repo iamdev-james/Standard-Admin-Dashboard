@@ -6,11 +6,12 @@ import { useStateContext } from '../../contexts/ContextProvider'
 
 const Login = () => {
   let navigate = useNavigate()
-  const { username, setUsername } = useStateContext()
+  const { username, setUsername, setIsAuthenticated } = useStateContext()
 
   const handleSubmit = () => {
     if(!username) return
     localStorage.setItem('Username', username)
+    setIsAuthenticated('true')
     return navigate('/')
   }
   return ReactDOM.createPortal(
@@ -19,7 +20,7 @@ const Login = () => {
         <div className='flex justify-center items-center'>
           <div
             className="items-center gap-3 ml-3 flex text-xl font-extrabold tracking-tight dark:text-white text-slate-900">
-              <span>Shopify</span>
+              <span>OStore</span>
           </div><span className='text-4xl'> | </span><p className='text-2xl font-bold'>LOGIN</p>
         </div>
           <p className='px-1 mb-16 text-sm mt-3 font-semibold'>Enter your name to access this amazing dashboard</p>

@@ -10,6 +10,7 @@ const initialState = {
 
 export const ContextProvider = ({ children }) => {
   const [ username, setUsername ] = useState(`${localStorage.getItem('Username')}`);
+  const [ isAuthenticated, setIsAuthenticated ] = useState(false);
   const [ menuActive, setMenuActive ] = useState(true);
   const [isClicked, setIsClicked] = useState(initialState);
   const [screenSize, setScreenSize] = useState(undefined);
@@ -63,7 +64,8 @@ export const ContextProvider = ({ children }) => {
       themeSettings, setThemeSettings,
       setMode, setColor,
       chat, addChat,
-      userTyping, setUserTyping
+      userTyping, setUserTyping,
+      isAuthenticated, setIsAuthenticated
     }}
     >
       { children }

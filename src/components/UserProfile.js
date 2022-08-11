@@ -7,7 +7,7 @@ import { useStateContext } from '../contexts/ContextProvider';
 import avatar from '../data/avatar.jpg';
 
 const UserProfile = () => {
-  const { currentColor, closeNavModal } = useStateContext();
+  const { currentColor, closeNavModal, username } = useStateContext();
 
   return (
     <div className="drop-shadow-xl nav-item absolute right-1 top-16 bg-white dark:bg-[#42464D] p-8 rounded-lg w-96">
@@ -30,9 +30,9 @@ const UserProfile = () => {
           alt="user-profile"
         />
         <div>
-          <p className="font-semibold text-xl dark:text-gray-200"> Michael Roberts </p>
-          <p className="text-gray-500 text-sm dark:text-gray-400">  Administrator   </p>
-          <p className="text-gray-500 text-sm font-semibold dark:text-gray-400"> info@shop.com </p>
+          <p className="font-semibold text-xl dark:text-gray-200"> { username } </p>
+          <p className="text-gray-500 text-sm dark:text-gray-400"> Sales Manager </p>
+          <p className="text-gray-500 text-sm font-semibold dark:text-gray-400"> {`${username.toLowerCase()}@ostore.biz`} </p>
         </div>
       </div>
       <div>

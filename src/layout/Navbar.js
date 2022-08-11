@@ -39,7 +39,7 @@ const NavButton = ({title, customFunc, icon, color, dotColor}) => (
 )
 
 const NavBar = () => {
-  const { setMenuActive, isClicked, toggleNavModal, screenSize, setScreenSize, currentColor } = useStateContext();
+  const { setMenuActive, isClicked, toggleNavModal, screenSize, setScreenSize, currentColor, username } = useStateContext();
 
   useEffect(() => {
     const handleScreenSize = () => setScreenSize(window.innerWidth);
@@ -93,7 +93,7 @@ const NavBar = () => {
             <img src={avatar} alt='Profile-Img' className='rounded-full w-8 h-8' />
             <p>
               <span className='text-gray-400 text-14'>Hi, </span>{' '}
-              <span className='text-gray-400 font-bold ml-1 text-14'>James</span>
+              <span className='text-gray-400 font-bold ml-1 text-14'>{ username }</span>
             </p>
           <MdKeyboardArrowDown />
           </div>

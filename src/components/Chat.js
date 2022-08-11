@@ -9,13 +9,12 @@ import io from 'socket.io-client';
 
 const Chat = () => {
   let socket;
-  let userName = 'James'
-  const { currentColor, closeNavModal, chat, addChat } = useStateContext();
+  const { currentColor, closeNavModal, chat, addChat, username } = useStateContext();
   let [chatMessage, setChatMessage] = useState("");
   
   // Connecting to socket
   useEffect(() => {
-    const server = "http://localhost:5000";
+    const server = "http://localhost:5000/";
     
     socket = io.connect(server);
   });
@@ -35,7 +34,7 @@ const Chat = () => {
   
   // Emit typing to server
   const emitTyping = () => {
-    socket.emit('typing', userName)
+    socket.emit('typing', username)
   }
   // Set message to state
   const handleMessageChange = (e) => {
@@ -46,7 +45,7 @@ const Chat = () => {
     e.preventDefault();
     const showTyping = document.getElementById("Typing")
     // Hardcoding needed variables
-    const name = userName;
+    const name = username;
     // const timeNow = moment();
     const type = 'Text';
     const message = chatMessage;

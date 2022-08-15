@@ -4,7 +4,7 @@ import { FiSettings } from 'react-icons/fi';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
 // Pages to be rendered
-import { Ecommerce, Kanban, Orders, Employees, Editor, Customers, ColorPicker, Calendar, Area, Bar, ColorMapping, Financial, Line, Pie, Pyramid, Stacked  } from './pages'
+import { Ecommerce, Kanban, Orders, Employees, Editor, Customers, ColorPicker, Calendar, Area, Bar, ColorMapping, Financial, Line, Pie, Pyramid, Stacked, Login  } from './pages'
 
 // Components to be used
 import { ThemeSettings } from './components'
@@ -14,6 +14,9 @@ import { Sidebar, Navbar } from './layout'
 
 // Importing context
 import { useStateContext } from './contexts/ContextProvider';
+
+// Protect routes
+import Protected from './pages/Auth/Protected';
 
 
 import './App.css';
@@ -70,29 +73,30 @@ function App() {
             {themeSettings && <ThemeSettings />}
 
             <Routes>
-              <Route path="/" element={ <Ecommerce />} />
-              <Route path="/ecommerce" element={ <Ecommerce />} />
+              <Route path="/login" element={ <Login />} />
+                <Route path="/" element={ <Protected><Ecommerce /></Protected>} />
+                <Route path="/ecommerce" element={ <Protected><Ecommerce /></Protected>} />
 
-              {/* Pages */}
-              <Route path="/orders" element={ <Orders />} />
-              <Route path="/employees" element={ <Employees />} />
-              <Route path="/customers" element={ <Customers />} />
+                {/* Pages */}
+                <Route path="/orders" element={ <Protected><Orders /></Protected>} />
+                <Route path="/employees" element={ <Protected><Employees /></Protected>} />
+                <Route path="/customers" element={ <Protected><Customers /></Protected>} />
 
-              {/* Apps */}
-              <Route path="/kanban" element={ <Kanban />} />
-              <Route path="/editor" element={ <Editor />} />
-              <Route path="/calendar" element={ <Calendar />} />
-              <Route path="/color-picker" element={ <ColorPicker />} />
+                {/* Apps */}
+                <Route path="/kanban" element={ <Protected><Kanban /></Protected>} />
+                <Route path="/editor" element={ <Protected><Editor /></Protected>} />
+                <Route path="/calendar" element={ <Protected><Calendar /></Protected>} />
+                <Route path="/color-picker" element={ <Protected><ColorPicker /></Protected>} />
 
-              {/* Charts */}
-              <Route path="/line" element={ <Line />} />
-              <Route path="/area" element={ <Area />} />
-              <Route path="/bar" element={ <Bar />} />
-              <Route path="/pie" element={ <Pie />} />
-              <Route path="/financial" element={ <Financial />} />
-              <Route path="/color-mapping" element={ <ColorMapping />} />
-              <Route path="/pyramid" element={ <Pyramid />} />
-              <Route path="/stacked" element={ <Stacked />} />
+                {/* Charts */}
+                <Route path="/line" element={ <Protected><Line /></Protected>} />
+                <Route path="/area" element={ <Protected><Area /></Protected>} />
+                <Route path="/bar" element={ <Protected><Bar /></Protected>} />
+                <Route path="/pie" element={ <Protected><Pie /></Protected>} />
+                <Route path="/financial" element={ <Protected><Financial /></Protected>} />
+                <Route path="/color-mapping" element={ <Protected><ColorMapping /></Protected>} />
+                <Route path="/pyramid" element={ <Protected><Pyramid /></Protected>} />
+                <Route path="/stacked" element={ <Protected><Stacked /></Protected>} />
             </Routes>
           </div>
         </div>

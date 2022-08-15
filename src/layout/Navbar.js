@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { AiOutlineMenu } from 'react-icons/ai'
-import { FiShoppingCart } from 'react-icons/fi'
 import { BsChatLeft } from 'react-icons/bs'
 import { RiNotification3Line } from 'react-icons/ri'
 import { MdKeyboardArrowDown } from 'react-icons/md'
@@ -10,7 +9,7 @@ import { TooltipComponent } from '@syncfusion/ej2-react-popups'
 // Profile Avatar
 import avatar from '../data/avatar.jpg'
 
-import { Chat, Cart, UserProfile } from '../components'
+import { Chat, UserProfile } from '../components'
 import { Notifications } from '.'
 
 // Context Here
@@ -40,7 +39,7 @@ const NavButton = ({title, customFunc, icon, color, dotColor}) => (
 )
 
 const NavBar = () => {
-  const { setMenuActive, isClicked, toggleNavModal, screenSize, setScreenSize, currentColor } = useStateContext();
+  const { setMenuActive, isClicked, toggleNavModal, screenSize, setScreenSize, currentColor, username } = useStateContext();
 
   useEffect(() => {
     const handleScreenSize = () => setScreenSize(window.innerWidth);
@@ -71,13 +70,6 @@ const NavBar = () => {
       />
       <div className='flex'>
         <NavButton
-          title="Cart"
-          customFunc= {() => toggleNavModal('cart')}
-          color={ currentColor }
-          icon={<FiShoppingCart />}
-        />
-
-        <NavButton
           title="Chat"
           dotColor="#03C9D7"
           customFunc= {() => toggleNavModal('chat')}
@@ -101,14 +93,13 @@ const NavBar = () => {
             <img src={avatar} alt='Profile-Img' className='rounded-full w-8 h-8' />
             <p>
               <span className='text-gray-400 text-14'>Hi, </span>{' '}
-              <span className='text-gray-400 font-bold ml-1 text-14'>James</span>
+              <span className='text-gray-400 font-bold ml-1 text-14'>{ username }</span>
             </p>
           <MdKeyboardArrowDown />
           </div>
         </TooltipComponent>
 
         {/* Component to display per time */}
-        {isClicked.cart && <Cart />}
         {isClicked.chat && <Chat />}
         {isClicked.userProfile && <UserProfile />}
         {isClicked.notification && <Notifications />}

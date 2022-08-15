@@ -326,11 +326,10 @@ const Ecommerce = () => {
               alt=""
             />
             <div className="mt-8">
-              <p className="font-semibold text-lg">React 18 coming soon!</p>
-              <p className="text-gray-400 ">By Johnathan Doe</p>
+              <p className="font-semibold text-lg">Analysis on our competitor's market appearance</p>
+              <p className="text-gray-400 ">By James Devvy</p>
               <p className="mt-8 text-sm text-gray-400">
-                This will be the small description for the news you have shown
-                here. There could be some great info.
+                Looking at the current market caps of our competitor relative to our market, analysis has shown that our company has proved worthy........
               </p>
               <div className="mt-3">
                 <Button

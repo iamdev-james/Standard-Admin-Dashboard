@@ -25,10 +25,21 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+  <style>
+    .loginmodal {
+      z-index: 999999;
+      overflow: hidden;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+  </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <div class="loginmodal" id="loginportal"></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

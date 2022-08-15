@@ -14,7 +14,7 @@ const Chat = () => {
   
   // Connecting to socket
   useEffect(() => {
-    const server = "http://localhost:5000/";
+    const server = "https://mydevvyadmindashboardserver.herokuapp.com/";
     
     socket = io.connect(server);
   });
